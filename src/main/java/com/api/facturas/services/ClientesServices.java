@@ -1,6 +1,7 @@
 package com.api.facturas.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,4 +24,31 @@ public class ClientesServices {
         return clientesRepo.save(cliente);
     }
 
+    public Optional<ClientesModel> getById(Long id){
+        return clientesRepo.findById(id);
+    }
+
+    public ClientesModel updateById(ClientesModel request, Long id){
+        ClientesModel cliente = clientesRepo.findById(id).get();
+
+        cliente.setNombre(request.getNombre());
+        cliente.setApellido(request.getApellido());
+        cliente.setTelefono(request.getTelefono());
+        cliente.setDomicilio(request.getDomicilio());
+        cliente.setCorreo(request.getCorreo());
+        cliente.setRfc(request.getRfc());
+        cliente.setFecha_nacimiento(request.getFecha_nacimiento());
+        
+        return cliente;
+    }
+
+    public Boolean deleteUser(Long id){
+        try {
+            clientesRepo.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+        
+    }
 }
