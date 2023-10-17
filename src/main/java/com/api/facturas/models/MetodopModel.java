@@ -1,6 +1,6 @@
 package com.api.facturas.models;
 
-import jakarta.persistence.*;;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "metodos_pago")
@@ -16,12 +16,18 @@ public class MetodopModel {
 
 //------------------Getters & Setters------------------------------------------
 
+    public MetodopModel(Long id) {
+        this.id = id;
+    }
+
     /**
      * @return Long return the id
      */
     public Long getId() {
         return id;
     }
+
+    
 
     /**
      * @param id the id to set

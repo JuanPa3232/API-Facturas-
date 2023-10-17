@@ -1,23 +1,18 @@
 package com.api.facturas.models;
 
-import java.util.Date;
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "clientes")
-public class ClientesModel {
-
+@Table(name = "datos_empresa")
+public class DatosEmpresaModel {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, columnDefinition = "BIGINT(20) UNSIGNED")
+    @Column(name = "id_empresa", nullable = false, columnDefinition = "BIGINT(20)")
     private Long id;
 
-    @Column(name = "nombre", nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(name = "nombre", nullable = false, columnDefinition = "VARCHAR(100)")
     private String nombre;
- 
-    @Column(name = "apellido", nullable = false, columnDefinition = "VARCHAR(50)")
-    private String apellido;
 
     @Column(name = "telefono", nullable = false, columnDefinition = "VARCHAR(10)")
     private String telefono;
@@ -25,19 +20,15 @@ public class ClientesModel {
     @Column(name = "correo", nullable = false, columnDefinition = "VARCHAR(100)")
     private String correo;
 
-    @Column(name = "domicilio", nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(name = "domicilio", nullable = false, columnDefinition = "VARCHAR(100)")
     private String domicilio;
 
     @Column(name = "rfc", nullable = false, columnDefinition = "VARCHAR(13)")
     private String rfc;
 
-    @Column(name = "fecha_nacimiento", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date fecha_nacimiento;
+//-----------------------------Getters & Setters-----------------------------------------
 
-    //-------------------GETTERS & SETTERS-------------------------------------------S
-
-    public ClientesModel(Long id) {
+    public DatosEmpresaModel(Long id) {
         this.id = id;
     }
 
@@ -47,6 +38,7 @@ public class ClientesModel {
     public Long getId() {
         return id;
     }
+    
 
     /**
      * @param id the id to set
@@ -67,20 +59,6 @@ public class ClientesModel {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    /**
-     * @return String return the apellido
-     */
-    public String getApellido() {
-        return apellido;
-    }
-
-    /**
-     * @param apellido the apellido to set
-     */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     /**
@@ -137,20 +115,6 @@ public class ClientesModel {
      */
     public void setRfc(String rfc) {
         this.rfc = rfc;
-    }
-
-    /**
-     * @return Date return the fecha_nacimiento
-     */
-    public Date getFecha_nacimiento() {
-        return fecha_nacimiento;
-    }
-
-    /**
-     * @param fecha_nacimiento the fecha_nacimiento to set
-     */
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
     }
 
 }

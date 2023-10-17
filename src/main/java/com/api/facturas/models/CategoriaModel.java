@@ -16,7 +16,9 @@ public class CategoriaModel {
 
 //------------------------Getters & Setters------------------------------------------------------
 
-    
+    public CategoriaModel(Long id) {
+        this.id = id;
+    }
 
     /**
      * @return Long return the id
@@ -24,6 +26,8 @@ public class CategoriaModel {
     public Long getId() {
         return id;
     }
+
+    
 
     /**
      * @param id the id to set

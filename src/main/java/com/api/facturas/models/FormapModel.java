@@ -19,6 +19,9 @@ public class FormapModel {
 
 //--------------------------Getters & Setters--------------------------
 
+    public FormapModel(Long id) {
+        this.id = id;
+    }
 
     /**
      * @return Long return the id
