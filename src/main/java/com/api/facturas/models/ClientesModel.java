@@ -2,6 +2,7 @@ package com.api.facturas.models;
 
 import java.util.Date;
 
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,8 +11,8 @@ public class ClientesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, columnDefinition = "BIGINT(20) UNSIGNED")
-    private Long id;
+    @Column(name = "id_cliente", nullable = false, columnDefinition = "BIGINT(20) UNSIGNED")
+    private Long id_ciente;
 
     @Column(name = "nombre", nullable = false, columnDefinition = "VARCHAR(50)")
     private String nombre;
@@ -35,25 +36,22 @@ public class ClientesModel {
     @Temporal(TemporalType.DATE)
     private Date fecha_nacimiento;
 
+    @Column(name = "actividad", nullable = false, columnDefinition = "VARCHAR(20)")
+    private String actividad;
+
+
     //-------------------GETTERS & SETTERS-------------------------------------------S
 
-    public ClientesModel(Long id) {
-        this.id = id;
+
+    
+    public ClientesModel() {
     }
 
-    /**
-     * @return Long return the id
-     */
-    public Long getId() {
-        return id;
+
+    public ClientesModel(Long id_ciente) {
+        this.id_ciente = id_ciente;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     /**
      * @return String return the nombre
@@ -151,6 +149,35 @@ public class ClientesModel {
      */
     public void setFecha_nacimiento(Date fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    /**
+     * @return String return the actividad
+     */
+    public String getActividad() {
+        return actividad;
+    }
+
+    /**
+     * @param actividad the actividad to set
+     */
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+
+
+    /**
+     * @return Long return the id_ciente
+     */
+    public Long getId_ciente() {
+        return id_ciente;
+    }
+
+    /**
+     * @param id_ciente the id_ciente to set
+     */
+    public void setId_ciente(Long id_ciente) {
+        this.id_ciente = id_ciente;
     }
 
 }

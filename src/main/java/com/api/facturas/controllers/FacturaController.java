@@ -17,17 +17,28 @@ public class FacturaController {
     private FacturaServices facturaService;
 
     @GetMapping
-    public ArrayList<FacturasModel> getClientes(){
-        return this.facturaService.getClientes();
+    public ArrayList<FacturasModel> getFacturas(){
+        return this.facturaService.getFacturas();
     }
 
     @PostMapping
-    public FacturasModel saveClientes(@RequestBody FacturasModel factura){
-        return this.facturaService.saveCliente(factura);
+    public FacturasModel saveFactura(@RequestBody FacturasModel factura){
+        return this.facturaService.saveFactura(factura);
       }
 
     @GetMapping(path = "/{id}")
-    public Optional<FacturasModel> getUserById(@PathVariable("id") Long id){
+    public Optional<FacturasModel> getFacturaById(@PathVariable("id") Long id){
         return this.facturaService.getById(id);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteById(@PathVariable("id") Long id){
+    boolean delete = this.facturaService.deleteFactura(id);
+        
+    if (delete) {
+        return "The user with the id " + id + " was deleted successfully";
+    } else {
+        return "Error deleting the user with the id " + id;
+    }
     }
 }

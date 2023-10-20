@@ -1,6 +1,7 @@
 package com.api.facturas.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -21,8 +22,8 @@ public class FacturasModel {
     private Date fecha_emision;
 
     @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private ClientesModel id;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+    private ClientesModel id_cliente;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
@@ -36,10 +37,13 @@ public class FacturasModel {
     @JoinColumn(name = "id_metodo_pago", referencedColumnName = "id_metodo_pago")
     private MetodopModel id_metodo_pago;
 
+    @OneToMany(mappedBy = "id_factura", cascade = CascadeType.ALL)
+    private List<DetallesModel> detalles;
+
 //----------------------------Getters & Setters--------------------------------
 
     
-    
+
 
     /**
      * @return Long return the id_factura
@@ -49,14 +53,18 @@ public class FacturasModel {
     }
     
 
+    public FacturasModel() {
+    }
+
+
     public FacturasModel(Long id_factura) {
         this.id_factura = id_factura;
     }
 
 
-    public FacturasModel( ClientesModel id, DatosEmpresaModel id_empresa, FormapModel id_forma_pago,
+    public FacturasModel( ClientesModel id_cliente, DatosEmpresaModel id_empresa, FormapModel id_forma_pago,
             MetodopModel id_metodo_pago) {
-        this.id = id;
+        this.id_cliente = id_cliente;
         this.id_empresa = id_empresa;
         this.id_forma_pago = id_forma_pago;
         this.id_metodo_pago = id_metodo_pago;
@@ -83,19 +91,27 @@ public class FacturasModel {
         this.fecha_emision = fecha_emision;
     }
 
-    /**
-     * @return ClientesModel return the id
-     */
-    public ClientesModel getId() {
-        return id;
+    
+
+    public ClientesModel getId_cliente() {
+        return id_cliente;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(ClientesModel id) {
-        this.id = id;
+
+    public void setId_cliente(ClientesModel id_cliente) {
+        this.id_cliente = id_cliente;
     }
+
+
+    public List<DetallesModel> getDetalles() {
+        return detalles;
+    }
+
+
+    public void setDetalles(List<DetallesModel> detalles) {
+        this.detalles = detalles;
+    }
+
 
     /**
      * @return DatosEmpresaModel return the id_empresa

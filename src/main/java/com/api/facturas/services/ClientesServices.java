@@ -38,8 +38,9 @@ public class ClientesServices {
         cliente.setCorreo(request.getCorreo());
         cliente.setRfc(request.getRfc());
         cliente.setFecha_nacimiento(request.getFecha_nacimiento());
+        cliente.setActividad(request.getActividad());
         
-        return cliente;
+        return clientesRepo.save(cliente);
     }
 
     public Boolean deleteUser(Long id){

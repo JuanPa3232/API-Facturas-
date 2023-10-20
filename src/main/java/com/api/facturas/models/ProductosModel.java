@@ -11,7 +11,7 @@ public class ProductosModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto", nullable = false, columnDefinition = "BIGINT(20) unsigned")
-    private Long id;
+    private Long id_producto;
 
     @Column(name = "descripcion", nullable = false, columnDefinition = "VARCHAR(100)")
     private String descripcion;
@@ -28,24 +28,18 @@ public class ProductosModel {
 
 //----------------------------Getters & Setters---------------------------------
 
-    public ProductosModel(Long id) {
-        this.id = id;
+    
+
+    public ProductosModel() {
     }
 
-    /**
-     * @return Long return the id
-     */
-    public Long getId() {
-        return id;
+    public ProductosModel(Long id_producto) {
+        this.id_producto = id_producto;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
 
+
+    
     /**
      * @return String return the descripcion
      */
@@ -100,6 +94,14 @@ public class ProductosModel {
      */
     public void setId_categoria(CategoriaModel id_categoria) {
         this.id_categoria = id_categoria;
+    }
+
+    public Long getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(Long id_producto) {
+        this.id_producto = id_producto;
     }
 
 }

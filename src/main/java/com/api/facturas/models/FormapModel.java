@@ -23,6 +23,9 @@ public class FormapModel {
         this.id = id;
     }
 
+    public FormapModel() {
+    }
+
     /**
      * @return Long return the id
      */

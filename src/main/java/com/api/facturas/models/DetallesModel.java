@@ -25,16 +25,24 @@ public class DetallesModel {
 
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
-    private ProductosModel id;
+    private ProductosModel id_producto;
 
 
 //------------------Getters & Setters-----------------------------------
 
-    public DetallesModel(Long id_detalle, FacturasModel id_factura, ProductosModel id) {
+    public DetallesModel() {
+    }
+
+    public DetallesModel(Long id_detalle, Integer cantidad, BigDecimal precio, FacturasModel id_factura,
+            ProductosModel id_producto) {
         this.id_detalle = id_detalle;
+        this.cantidad = cantidad;
+        this.precio = precio;
         this.id_factura = id_factura;
-        this.id = id;
-    }      
+        this.id_producto = id_producto;
+    }
+
+
 
     /**
      * @return Long return the id_detalle
@@ -92,18 +100,19 @@ public class DetallesModel {
         this.id_factura = id_factura;
     }
 
+
     /**
-     * @return ProductosModel return the id
+     * @return ProductosModel return the id_producto
      */
-    public ProductosModel getId() {
-        return id;
+    public ProductosModel getId_producto() {
+        return id_producto;
     }
 
     /**
-     * @param id the id to set
+     * @param id_producto the id_producto to set
      */
-    public void setId(ProductosModel id) {
-        this.id = id;
+    public void setId_producto(ProductosModel id_producto) {
+        this.id_producto = id_producto;
     }
 
 }

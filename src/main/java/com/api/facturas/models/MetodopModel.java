@@ -20,6 +20,9 @@ public class MetodopModel {
         this.id = id;
     }
 
+    public MetodopModel() {
+    }
+
     /**
      * @return Long return the id
      */

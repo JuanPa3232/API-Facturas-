@@ -20,6 +20,9 @@ public class CategoriaModel {
         this.id = id;
     }
 
+    public CategoriaModel() {
+    }
+
     /**
      * @return Long return the id
      */

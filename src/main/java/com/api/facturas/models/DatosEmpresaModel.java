@@ -26,10 +26,15 @@ public class DatosEmpresaModel {
     @Column(name = "rfc", nullable = false, columnDefinition = "VARCHAR(13)")
     private String rfc;
 
+
 //-----------------------------Getters & Setters-----------------------------------------
 
     public DatosEmpresaModel(Long id) {
         this.id = id;
+    }
+
+
+    public DatosEmpresaModel() {
     }
 
     /**
@@ -116,5 +121,6 @@ public class DatosEmpresaModel {
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
+
 
 }

@@ -33,7 +33,7 @@ public class ClientesController {
     }
 
     @PutMapping(path = "/{id}")
-    public ClientesModel updateById(@RequestBody ClientesModel request, Long id){
+    public ClientesModel updateById(@RequestBody ClientesModel request, @PathVariable Long id){
         return this.cliService.updateById(request, id);
     }
 
