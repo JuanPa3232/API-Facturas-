@@ -28,6 +28,18 @@ public class FacturaServices {
         return facturaRepo.findById(id);
     }
 
+    public FacturasModel updateById(FacturasModel request, Long id){
+        FacturasModel factura = facturaRepo.findById(id).get();
+        
+        factura.setFecha_emision(request.getFecha_emision());
+        factura.setId_cliente(request.getId_cliente());
+        factura.setId_empresa(request.getId_empresa());
+        factura.setId_forma_pago(request.getId_forma_pago());
+        factura.setId_metodo_pago(request.getId_metodo_pago());
+        
+        return facturaRepo.save(factura);
+    }
+
     public Boolean deleteFactura(Long id){
         try {
             facturaRepo.deleteById(id);

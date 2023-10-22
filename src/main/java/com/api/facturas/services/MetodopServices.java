@@ -15,12 +15,12 @@ public class MetodopServices {
     @Autowired
     MetodopRepository metodoRepo;
 
-    public ArrayList<MetodopModel> getClientes(){
+    public ArrayList<MetodopModel> getMetodoPago(){
         return (ArrayList<MetodopModel>) metodoRepo.findAll();
         
     }
 
-    public MetodopModel saveCliente(MetodopModel metodo){
+    public MetodopModel saveMetodoPago(MetodopModel metodo){
         return metodoRepo.save(metodo);
     }
 
@@ -28,7 +28,15 @@ public class MetodopServices {
         return metodoRepo.findById(id);
     }
 
-    public Boolean deleteUser(Long id){
+    public MetodopModel updateById(MetodopModel request, Long id){
+        MetodopModel metodopago = metodoRepo.findById(id).get();
+        
+        metodopago.setDescripcion(request.getDescipcion());
+
+        return metodoRepo.save(metodopago);
+    }
+
+    public Boolean deleteMetodoPago(Long id){
         try {
             metodoRepo.deleteById(id);
             return true;

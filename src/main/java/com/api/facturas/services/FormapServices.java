@@ -15,20 +15,29 @@ public class FormapServices {
     @Autowired
     FormapRepository formapRepo;
 
-    public ArrayList<FormapModel> getClientes(){
+    public ArrayList<FormapModel> getFormaPago(){
         return (ArrayList<FormapModel>) formapRepo.findAll();
         
     }
 
-    public FormapModel saveCliente(FormapModel cliente){
-        return formapRepo.save(cliente);
+    public FormapModel saveFormaPago(FormapModel formapago){
+        return formapRepo.save(formapago);
     }
 
     public Optional<FormapModel> getById(Long id){
         return formapRepo.findById(id);
     }
 
-    public Boolean deleteUser(Long id){
+    public FormapModel updateById(FormapModel request, Long id){
+        FormapModel formapago = formapRepo.findById(id).get();
+        
+        formapago.setNombre(request.getNombre());
+        formapago.setDescripcion(request.getDescripcion());
+
+        return formapRepo.save(formapago);
+    }
+
+    public Boolean deleteFormaPago(Long id){
         try {
             formapRepo.deleteById(id);
             return true;

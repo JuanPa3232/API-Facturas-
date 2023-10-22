@@ -17,13 +17,13 @@ public class MetodopController {
     private MetodopServices metodoServices;
 
     @GetMapping
-    public ArrayList<MetodopModel> getClientes(){
-        return this.metodoServices.getClientes();
+    public ArrayList<MetodopModel> getMetodoPago(){
+        return this.metodoServices.getMetodoPago();
     }
 
     @PostMapping
-    public MetodopModel saveClientes(@RequestBody MetodopModel metodop){
-        return this.metodoServices.saveCliente(metodop);
+    public MetodopModel saveMetodoPago(@RequestBody MetodopModel metodop){
+        return this.metodoServices.saveMetodoPago(metodop);
       }
 
     @GetMapping(path = "/{id}")
@@ -31,14 +31,19 @@ public class MetodopController {
         return this.metodoServices.getById(id);
     }
 
+    @PutMapping(path = "/{id}")
+    public MetodopModel updateById(@RequestBody MetodopModel request, @PathVariable Long id){
+        return this.metodoServices.updateById(request, id);
+    }
+
     @DeleteMapping(path = "/{id}")
     public String deleteById(@PathVariable("id") Long id){
-    boolean delete = this.metodoServices.deleteUser(id);
+    boolean delete = this.metodoServices.deleteMetodoPago(id);
         
     if (delete) {
-        return "The user with the id " + id + " was deleted successfully";
+        return "El metodo de pago con el id " + id + " fue eliminiado con exito";
     } else {
-        return "Error deleting the user with the id " + id;
+        return "Hubo un error eliminando el metodo de pago con el id:  " + id;
     }
     }
 

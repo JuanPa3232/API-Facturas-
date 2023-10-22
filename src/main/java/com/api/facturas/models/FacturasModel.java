@@ -42,16 +42,11 @@ public class FacturasModel {
 
 //----------------------------Getters & Setters--------------------------------
 
-    
 
 
-    /**
-     * @return Long return the id_factura
-     */
-    public Long getId_factura() {
-        return id_factura;
-    }
-    
+
+
+
 
     public FacturasModel() {
     }
@@ -69,6 +64,17 @@ public class FacturasModel {
         this.id_forma_pago = id_forma_pago;
         this.id_metodo_pago = id_metodo_pago;
     }
+
+    
+
+
+    /**
+     * @return Long return the id_factura
+     */
+    public Long getId_factura() {
+        return id_factura;
+    }
+    
 
     /**
      * @param id_factura the id_factura to set

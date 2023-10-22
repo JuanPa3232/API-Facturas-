@@ -9,7 +9,7 @@ public class DatosEmpresaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empresa", nullable = false, columnDefinition = "BIGINT(20)")
-    private Long id;
+    private Long id_empresa;
 
     @Column(name = "nombre", nullable = false, columnDefinition = "VARCHAR(100)")
     private String nombre;
@@ -29,27 +29,14 @@ public class DatosEmpresaModel {
 
 //-----------------------------Getters & Setters-----------------------------------------
 
-    public DatosEmpresaModel(Long id) {
-        this.id = id;
-    }
+
 
 
     public DatosEmpresaModel() {
     }
 
-    /**
-     * @return Long return the id
-     */
-    public Long getId() {
-        return id;
-    }
-    
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
+    public DatosEmpresaModel(Long id_empresa) {
+        this.id_empresa = id_empresa;
     }
 
     /**
@@ -122,5 +109,20 @@ public class DatosEmpresaModel {
         this.rfc = rfc;
     }
 
+
+
+    /**
+     * @return Long return the id_empresa
+     */
+    public Long getId_empresa() {
+        return id_empresa;
+    }
+
+    /**
+     * @param id_empresa the id_empresa to set
+     */
+    public void setId_empresa(Long id_empresa) {
+        this.id_empresa = id_empresa;
+    }
 
 }

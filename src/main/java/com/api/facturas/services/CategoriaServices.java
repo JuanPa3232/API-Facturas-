@@ -15,12 +15,12 @@ public class CategoriaServices {
     @Autowired
     CategoriaRepository categRepo;
 
-    public ArrayList<CategoriaModel> getClientes(){
+    public ArrayList<CategoriaModel> getCategoria(){
         return (ArrayList<CategoriaModel>) categRepo.findAll();
         
     }
 
-    public CategoriaModel saveCliente(CategoriaModel categoria){
+    public CategoriaModel saveCategoria(CategoriaModel categoria){
         return categRepo.save(categoria);
     }
 
@@ -28,7 +28,15 @@ public class CategoriaServices {
         return categRepo.findById(id);
     }
 
-    public Boolean deleteUser(Long id){
+    public CategoriaModel updateById(CategoriaModel request, Long id){
+        CategoriaModel categoria = categRepo.findById(id).get();
+        
+        categoria.setNombre(request.getNombre());
+
+        return categRepo.save(categoria);
+    }
+
+    public Boolean deleteCategoria(Long id){
         try {
             categRepo.deleteById(id);
             return true;

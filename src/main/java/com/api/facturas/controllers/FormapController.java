@@ -18,13 +18,13 @@ public class FormapController {
     private FormapServices formapService;
 
     @GetMapping
-    public ArrayList<FormapModel> getClientes(){
-        return this.formapService.getClientes();
+    public ArrayList<FormapModel> getFormaPago(){
+        return this.formapService.getFormaPago();
     }
 
     @PostMapping
-    public FormapModel saveClientes(@RequestBody FormapModel formap){
-        return this.formapService.saveCliente(formap);
+    public FormapModel saveFormaPago(@RequestBody FormapModel formap){
+        return this.formapService.saveFormaPago(formap);
       }
 
     @GetMapping(path = "/{id}")
@@ -32,14 +32,19 @@ public class FormapController {
         return this.formapService.getById(id);
     }
 
+    @PutMapping(path = "/{id}")
+    public FormapModel updateById(@RequestBody FormapModel request, @PathVariable Long id){
+        return this.formapService.updateById(request, id);
+    }
+
     @DeleteMapping(path = "/{id}")
     public String deleteById(@PathVariable("id") Long id){
-    boolean delete = this.formapService.deleteUser(id);
+    boolean delete = this.formapService.deleteFormaPago(id);
         
     if (delete) {
-        return "The user with the id " + id + " was deleted successfully";
+        return "La forma de pago con el id " + id + " fue eliminiado con exito";
     } else {
-        return "Error deleting the user with the id " + id;
+        return "Hubo un error eliminando la forma de pago con el id:  " + id;
     }
     }
 

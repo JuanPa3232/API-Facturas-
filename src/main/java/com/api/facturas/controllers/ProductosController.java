@@ -17,30 +17,34 @@ public class ProductosController {
     private ProductosServices prodService;
 
     @GetMapping
-    public ArrayList<ProductosModel> getClientes(){
-        return this.prodService.getClientes();
+    public ArrayList<ProductosModel> getProductos() {
+        return this.prodService.getProductos();
     }
 
     @PostMapping
-    public ProductosModel saveClientes(@RequestBody ProductosModel producto){
-        return this.prodService.saveCliente(producto);
-      }
+    public ProductosModel saveProducto(@RequestBody ProductosModel producto) {
+        return this.prodService.saveProducto(producto);
+    }
 
     @GetMapping(path = "/{id}")
-    public Optional<ProductosModel> getUserById(@PathVariable("id") Long id){
+    public Optional<ProductosModel> getUserById(@PathVariable("id") Long id) {
         return this.prodService.getById(id);
     }
 
-    @DeleteMapping(path = "/{id}")
-    public String deleteById(@PathVariable("id") Long id){
-    boolean delete = this.prodService.deleteUser(id);
-        
-    if (delete) {
-        return "The user with the id " + id + " was deleted successfully";
-    } else {
-        return "Error deleting the user with the id " + id;
-    }
+    @PutMapping(path = "/{id}")
+    public ProductosModel updateById(@RequestBody ProductosModel request, @PathVariable Long id) {
+        return this.prodService.updateById(request, id);
     }
 
-    
+    @DeleteMapping(path = "/{id}")
+    public String deleteById(@PathVariable("id") Long id) {
+        boolean delete = this.prodService.deleteProducto(id);
+
+        if (delete) {
+            return "La categoria con el id " + id + " fue eliminiado con exito";
+        } else {
+            return "Hubo un error eliminando la categoria con el id:  " + id;
+        }
+    }
+
 }

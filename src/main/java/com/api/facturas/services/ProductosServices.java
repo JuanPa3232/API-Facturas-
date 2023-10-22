@@ -15,12 +15,12 @@ public class ProductosServices {
     @Autowired 
     ProductosRepository prodRepo;
 
-    public ArrayList<ProductosModel> getClientes(){
+    public ArrayList<ProductosModel> getProductos(){
         return (ArrayList<ProductosModel>) prodRepo.findAll();
         
     }
 
-    public ProductosModel saveCliente(ProductosModel producto){
+    public ProductosModel saveProducto(ProductosModel producto){
         return prodRepo.save(producto);
     }
 
@@ -28,7 +28,19 @@ public class ProductosServices {
         return prodRepo.findById(id);
     }
 
-    public Boolean deleteUser(Long id){
+    public ProductosModel updateById(ProductosModel request, Long id){
+        ProductosModel producto = prodRepo.findById(id).get();
+        
+        producto.setDescripcion(request.getDescripcion());
+        producto.setPrecio_unitario(request.getPrecio_unitario());
+        producto.setStock(request.getStock());
+        producto.setId_categoria(request.getId_categoria());
+
+        return prodRepo.save(producto);
+    }
+
+
+    public Boolean deleteProducto(Long id){
         try {
             prodRepo.deleteById(id);
             return true;

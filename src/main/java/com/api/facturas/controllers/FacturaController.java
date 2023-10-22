@@ -31,14 +31,19 @@ public class FacturaController {
         return this.facturaService.getById(id);
     }
 
+    @PutMapping(path = "/{id}")
+    public FacturasModel updateById(@RequestBody FacturasModel request, @PathVariable Long id){
+        return this.facturaService.updateById(request, id);
+    }
+
     @DeleteMapping(path = "/{id}")
     public String deleteById(@PathVariable("id") Long id){
     boolean delete = this.facturaService.deleteFactura(id);
         
     if (delete) {
-        return "The user with the id " + id + " was deleted successfully";
+        return "La factura con el id " + id + " fue eliminiado con exito";
     } else {
-        return "Error deleting the user with the id " + id;
+        return "Hubo un error eliminando la factura con el id:  " + id;
     }
     }
 }
