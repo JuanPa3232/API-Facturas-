@@ -3,10 +3,20 @@ package com.api.facturas.models;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.annotations.ColumnDefault;
+//import org.hibernate.annotations.ColumnDefault;
 
-import jakarta.persistence.*;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table(name = "factura")
 public class FacturasModel {
@@ -16,9 +26,13 @@ public class FacturasModel {
     @Column(name = "id_factura", nullable = false, columnDefinition = "BIGINT(20) unsigned")
     private Long id_factura;
 
-    @Column(name = "fecha_emision", nullable = false)
+    /**@Column(name = "fecha_emision", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @ColumnDefault("CURRENT_TIMESTAMP")
+    private Date fecha_emision;*/
+
+    @Column(name = "fecha_emision", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date fecha_emision;
 
     @ManyToOne
